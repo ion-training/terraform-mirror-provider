@@ -44,20 +44,18 @@ mkdir -p /vagrant/terraform-proj/local_providers/
 Directory structure should look like (check `Packet layout` at this [link](https://www.terraform.io/cli/config/config-file#provider-installation))
 - `HOSTNAME/NAMESPACE/TYPE/terraform-provider-TYPE_VERSION_TARGET.zip`
 
-Within the local_providers create directory structure to place the binary
+Within the local_providers create directory structure to place the aws provider binary
 ```
 mkdir -p /vagrant/terraform-proj/local_providers/registry\.terraform\.io/hashicorp/aws
 ```
 
-Using a subshell cd into the aws directory (`HOSTNAME/NAMESPACE/TYPE/`),\
-and download the aws provider from releases.hashicorp.com
+Using a subshell cd into the aws directory (remember the `HOSTNAME/NAMESPACE/TYPE/`) and download the aws provider
 ```
 ( cd /vagrant/terraform-proj/local_providers/registry\.terraform\.io/hashicorp/aws && \
 curl --remote-name https://releases.hashicorp.com/terraform-provider-aws/3.74.0/terraform-provider-aws_3.74.0_linux_amd64.zip )
 ```
 
-Create main.tf file and use the aws provider,\
-keeping in mind that `~/.terraformrc` will take care of the redirection to local disk.
+Create main.tf file and use the aws provider, keeping in mind that `~/.terraformrc` will take care of the redirection to local disk.
 
 ```
 touch main.tf
@@ -78,8 +76,7 @@ terraform {
 }
 HEREDOC
 ```
-In above main.tf the kubernetes provider was also used to demonstrate\
-that aws provider will fetched from local disk while kubernetes provider via internet.
+In above main.tf the kubernetes provider was also used to demonstrate that aws provider will fetched from local disk while kubernetes provider via internet.
 
 Terraform init
 ```
